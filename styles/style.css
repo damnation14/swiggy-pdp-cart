@@ -9,37 +9,38 @@ h1,h2,h3{
   margin:0;
   font-family:  Helvetica;
 }
-nav{
+header{
   margin: 10px 10px 10px  10px;
 }
 
 
-.navbar{
+.logo{
   margin: 0 auto;
-  width:80%;
+  padding-left: 150px;
+  padding-bottom: 12px;
+
   display:flex;
 
 }
-.navbar img{
+.logo img{
   width:50px;
   height:50px;
 }
 
 
 
-
 .title{
+  
   background-color: #04083C;
-  padding: 10px 10px 10px 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-}
-.container{
-  margin: 0 auto;
-  width:80%;
   display: flex;
   align-items: center;
 }
-.container img {
+.title img {
   width: 200px;
   height: 200px;
   margin: 10px 10px 10px 10px;
@@ -47,9 +48,8 @@ nav{
   flex-basis: 25%;
 }
 
-.container p{
-  font-size:40px;
-  font-weight:5;
+.title h1{
+  
   color: #fff;
 
 }
@@ -64,43 +64,45 @@ nav{
   margin: 0 auto;
   width:80%;
   display: flex;
+  padding-top: 25px;
   justify-content: space-between;
 }
 
 
 
 
-.left{
+.Recommended{
   margin-right: 15px ;
   padding-right: 15px ;
   border-right: 1px solid #E5E9EC;
   flex-basis: 25%;
 }
 
-.left p{
+.Recommended h2{
 
   margin:0;
   text-align: right;
   color: #FA7B03;
+  font-size:15px;
 
 }
-.left li{
+.Recommended li{
   text-align: right;
 
 }
 
 
-.middle{
+.menu-items{
   padding-left: 15px ;
   padding-right: 25px ;
   flex-basis:50%;
 }
-.middle img{
+.menu-items img{
   width:20px;
   height:20px;
 }
 
-.middle > p{
+.menu-items > p{
   margin: 0;
   color: #999999;
   font-size:12px;
@@ -115,11 +117,11 @@ nav{
 }
 
 
-.right{
+.Cart{
   flex-basis: 25%;
 
 }
-.right > p{
+.Cart > p{
   margin: 0;
   color: #999999;
   font-size:12px;
@@ -160,7 +162,7 @@ footer{
    align-items: center;
 }
 
-.rightf
+.contacts
 {
     height:50px;  
 }
