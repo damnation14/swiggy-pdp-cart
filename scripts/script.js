@@ -68,17 +68,19 @@ function categoryTemplate(categoriesList) {
   for (let category of categoriesList) {
       let listItem = document.createElement("li");
       listItem.innerText = category.displayName;
+      listItem.id = category.id;
       unorderedList.appendChild(listItem);
   }
 
   return unorderedList;
+
 }
 
 
 
 function menuHeaderTemplate(categoryHeader, categoryItemsNo) {
   return `<h2>${categoryHeader}</h2>
-        <p>ITEMS ${categoryItemsNo}</p>`;
+      <p>ITEMS ${categoryItemsNo}</p>`;
 }
 
 function menuItemsTemplate(menuItems) {
@@ -105,7 +107,7 @@ function menuItemsTemplate(menuItems) {
 
 function cartHeaderTemplate(cartItemsNo) {
   return `<h2>Cart</h2>
-        <p>ITEMS ${cartItemsNo}</p>`;
+      <p>ITEMS ${cartItemsNo}</p>`;
 }
 
 
@@ -124,10 +126,10 @@ function cartItemsTemplate(cartItem) {
 
 function cartPriceSubmitTemplate(subTotal) {
   return `<div class="total-price">
-          <h3>Subtotal</h3>
-          <p>₹${subTotal}</p>
-        </div>
-        <button class="button">Checkout</button>`;
+        <h3>Subtotal</h3>
+        <p>₹${subTotal}</p>
+      </div>
+      <button class="button">Checkout</button>`;
 }
 
 
@@ -153,22 +155,6 @@ let module = (function() {
   }
 
 
-  function mapItemsToCategory() {
-      const menuItems = menuInfo.menuItems;
-      const categoriesList = categoryInfo.categories;
-      let CategoryItemsMap = new Map();
-      for (let category of categoriesList) {
-          CategoryItemsMap[category.id] = [category.displayName];
-      }
-      for (let menu of menuItems) {
-          let tempCategories = menu.categories;
-          for (let tempCategory of tempCategories) {
-              CategoryItemsMap[tempCategory].push(menu);
-          }
-      }
-      return CategoryItemsMap;
-  }
-
 
 
   function createCategorySection() {
@@ -176,25 +162,16 @@ let module = (function() {
       const categoryContainer = document.querySelector(".category");
       const unorderedList = categoryTemplate(categoriesList);
       categoryContainer.appendChild(unorderedList);
+      document.querySelectorAll('.category ul li').forEach(element => element.addEventListener('click', event => handleMenuFromCategory(event)));
+
 
   }
 
   function createMenuSection() {
       const CategoryItemsMap = mapItemsToCategory();
-      const menuContainer = document.querySelector(".menu-items");
-
-      for (const category in CategoryItemsMap) {
-          const categoryHeaderItems = CategoryItemsMap[category];
-          const categoryItems = categoryHeaderItems.slice(1);
-          if (categoryItems.length == 0)
-              continue;
-          menuContainer.innerHTML += menuHeaderTemplate(categoryHeaderItems[0], categoryItems.length);
-          const menuItemsListDiv = menuItemsTemplate(categoryItems);
-          menuContainer.appendChild(menuItemsListDiv);
-      }
-
+      document.querySelectorAll('.category ul li')[0].classList.add("highlighted");
+      createMenuFromCategory(Object.keys(CategoryItemsMap)[0]);
   }
-
 
 
   function createCartSection() {
@@ -211,7 +188,41 @@ let module = (function() {
 
   }
 
+  function createMenuFromCategory(category) {
+      const CategoryItemsMap = mapItemsToCategory();
+      const menuContainer = document.querySelector(".menu-items");
+      const categoryHeaderItems = CategoryItemsMap[category];
+      const categoryMenuItems = categoryHeaderItems.slice(1);
 
+      menuContainer.innerHTML = menuHeaderTemplate(categoryHeaderItems[0], categoryMenuItems.length);
+      const menuItemsListDiv = menuItemsTemplate(categoryMenuItems);
+      menuContainer.appendChild(menuItemsListDiv);
+
+  }
+
+  function mapItemsToCategory() {
+      const menuItems = menuInfo.menuItems;
+      const categoriesList = categoryInfo.categories;
+      let CategoryItemsMap = new Map();
+      for (let category of categoriesList) {
+          CategoryItemsMap[category.id] = [category.displayName];
+      }
+      for (let menu of menuItems) {
+          let tempCategories = menu.categories;
+          for (let tempCategory of tempCategories) {
+              CategoryItemsMap[tempCategory].push(menu);
+          }
+      }
+      return CategoryItemsMap;
+  }
+
+  function handleMenuFromCategory(category) {
+      document.querySelectorAll('.category ul li').forEach(element => {
+          element.classList.remove("highlighted");
+      })
+      category.target.classList.add("highlighted");
+      createMenuFromCategory(category.target.id);
+  }
 
 })();
 
