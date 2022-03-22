@@ -70,20 +70,20 @@ main {
 	flex-basis: 25%;
 }
 
-.recommended {
+.category {
 	padding-top: 25px;
 	padding-right: 25px;
 	border-right: 1px solid #E5E9EC;
 }
 
-.recommended h2 {
+.category h2 {
 	margin: 0;
 	text-align: right;
 	color: #FA7B03;
 	font-size: 15px;
 }
 
-.recommended li {
+.category li {
 	text-align: right;
 }
 
@@ -125,6 +125,12 @@ main {
 	margin: 0;
 	color: #999999;
 	font-size: 12px;
+}
+
+.cart-item-quantity {
+	display: flex;
+	justify-content: space-between;
+
 }
 
 .total-price {

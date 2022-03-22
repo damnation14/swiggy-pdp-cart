@@ -1,7 +1,3 @@
-
-
-
-
 function getMenuInfo() {
   return {
       "menuItems": [{
@@ -66,160 +62,156 @@ function getCategoryInfo() {
   };
 }
 
-
-
-//Recommended map
-// let tempMap= new Map();
-// for (let recommendedCategory of recommendedCategories){
-//   tempMap[recommendedCategory.id]=[];
-// }
-// for(let menu of menuItems){
-//   let tempCategories= menu.categories;
-//   for (let tempCategory of tempCategories){
-//     tempMap[tempCategory].push(menu.displayName);
-//   }
-// }
-
-
 //Template
-function categoryTemplate(recommendedCategories){
-  console.log(recommendedCategories);
-  const unorderedList=document.createElement("ul");
-      for(let recommendedCategory of recommendedCategories){
-        let listItem=document.createElement("li");
-        listItem.innerText=recommendedCategory.displayName;
-        unorderedList.appendChild(listItem);
-      }
-
-  return unorderedList;
-}
-
-function menuTemplate(menuItems){
-
-  const menuItemsListDiv= document.createElement("div");
-      menuItemsListDiv.classList.add('items');
-      for (let item of menuItems){
-          const menuDiv=document.createElement("div");
-          const itemImg=document.createElement("img");
-          const itemName=document.createElement("p")
-          const itemPrice=document.createElement("p")
-          if (item.vegetarian)
-            itemImg.src="https://i.pinimg.com/originals/e4/1f/f3/e41ff3b10a26b097602560180fb91a62.png";
-          else
-            itemImg.src="https://freesvg.org/img/1531813245.png";
-          itemName.innerText=item.displayName;
-          itemPrice.innerText=`₹${item.price}`;
-          menuDiv.append(itemImg,itemName,itemPrice);
-          menuItemsListDiv.appendChild(menuDiv);
-      }
-    return menuItemsListDiv;
-}
-
-function cartTemplate(recommendedCategories){
-  console.log(recommendedCategories);
-  const unorderedList=document.createElement("ul");
-      for(let recommendedCategory of recommendedCategories){
-        let listItem=document.createElement("li");
-        listItem.innerText=recommendedCategory.displayName;
-        unorderedList.appendChild(listItem);
-      }
+function categoryTemplate(categoriesList) {
+  const unorderedList = document.createElement("ul");
+  for (let category of categoriesList) {
+      let listItem = document.createElement("li");
+      listItem.innerText = category.displayName;
+      unorderedList.appendChild(listItem);
+  }
 
   return unorderedList;
 }
 
 
 
+function menuHeaderTemplate(categoryHeader, categoryItemsNo) {
+  return `<h2>${categoryHeader}</h2>
+        <p>ITEMS ${categoryItemsNo}</p>`;
+}
+
+function menuItemsTemplate(menuItems) {
+
+  const menuItemsListDiv = document.createElement("div");
+  menuItemsListDiv.classList.add('items');
+  for (let item of menuItems) {
+      const menuDiv = document.createElement("div");
+      const itemImg = document.createElement("img");
+      const itemName = document.createElement("p")
+      const itemPrice = document.createElement("p")
+      if (item.vegetarian)
+          itemImg.src = "https://i.pinimg.com/originals/e4/1f/f3/e41ff3b10a26b097602560180fb91a62.png";
+      else
+          itemImg.src = "https://freesvg.org/img/1531813245.png";
+      itemName.innerText = item.displayName;
+      itemPrice.innerText = `₹${item.price}`;
+      menuDiv.append(itemImg, itemName, itemPrice);
+      menuItemsListDiv.appendChild(menuDiv);
+  }
+  return menuItemsListDiv;
+}
 
 
-let module=(function()
-{
+function cartHeaderTemplate(cartItemsNo) {
+  return `<h2>Cart</h2>
+        <p>ITEMS ${cartItemsNo}</p>`;
+}
 
-  const menuInfo=getMenuInfo();
-  const cartInfo=getCartInfo();
-  const recommendedInfo=getCategoryInfo();
-  
-  const recommendedCategories= recommendedInfo.categories;
+
+function cartItemsTemplate(cartItem) {
+
+  const cartItemDiv = document.createElement("div");
+  cartItemDiv.classList.add('cart-item-quantity');
+  const cartItemName = document.createElement("p");
+  const cartItemQuantity = document.createElement("p")
+  cartItemName.innerText = cartItem.name;
+  cartItemQuantity.innerText = cartItem.quantity;
+  cartItemDiv.appendChild(cartItemName);
+  cartItemDiv.appendChild(cartItemQuantity);
+  return cartItemDiv;
+}
+
+function cartPriceSubmitTemplate(subTotal) {
+  return `<div class="total-price">
+          <h3>Subtotal</h3>
+          <p>₹${subTotal}</p>
+        </div>
+        <button class="button">Checkout</button>`;
+}
+
+
+let module = (function() {
+
+  const menuInfo = getMenuInfo();
+  const cartInfo = getCartInfo();
+  const categoryInfo = getCategoryInfo();
+
+
 
   return {
-    init:displaySections
+      init: displaySections
   }
 
-  
 
-  function displaySections()
-  {
-    
-    createCategorySection();
-    createMenuSection();
-    createCartSection();
+
+  function displaySections() {
+
+      createCategorySection();
+      createMenuSection();
+      createCartSection();
   }
 
-  function createCategorySection(){
-      const categoryContainer=document.querySelector(".recommended");
-      const unorderedList=categoryTemplate(recommendedCategories);
+
+  function mapItemsToCategory() {
+      const menuItems = menuInfo.menuItems;
+      const categoriesList = categoryInfo.categories;
+      let CategoryItemsMap = new Map();
+      for (let category of categoriesList) {
+          CategoryItemsMap[category.id] = [category.displayName];
+      }
+      for (let menu of menuItems) {
+          let tempCategories = menu.categories;
+          for (let tempCategory of tempCategories) {
+              CategoryItemsMap[tempCategory].push(menu);
+          }
+      }
+      return CategoryItemsMap;
+  }
+
+
+
+  function createCategorySection() {
+      const categoriesList = categoryInfo.categories;
+      const categoryContainer = document.querySelector(".category");
+      const unorderedList = categoryTemplate(categoriesList);
       categoryContainer.appendChild(unorderedList);
 
   }
 
-  function createMenuSection(){
-      const menuItems=menuInfo.menuItems;
-      const menuContainer= document.querySelector(".menu-items");
-      const menuHeader=document.createElement("h2");
-      menuHeader.innerText="Recommended";
-      const menuItemNo=document.createElement("p");
-      menuItemNo.innerText=`ITEMS ${2}`;
-      menuContainer.appendChild(menuHeader);
-      menuContainer.appendChild(menuItemNo);
+  function createMenuSection() {
+      const CategoryItemsMap = mapItemsToCategory();
+      const menuContainer = document.querySelector(".menu-items");
 
-      //Menu items
-      const menuItemsListDiv=menuTemplate(menuItems);
-      menuContainer.appendChild(menuItemsListDiv);
-
-  }
-
-  
-
-  function createCartSection(){
-
-        const cartItems=cartInfo.lineItems;
-        const cart=document.querySelector(".cart");
-        const cartHeader=document.createElement("h2");
-        const cartItemNo=document.createElement("p");
-        cartHeader.innerText="Cart";
-        cartItemNo.innerText=`ITEMS ${2}`;
-        cart.appendChild(cartHeader);
-        cart.appendChild(cartItemNo);
-
-        for (let cartItem of cartItems) {
-        const cartItemDiv=document.createElement("div");
-        cartItemDiv.classList.add('cart-item');
-        const cartItemName=document.createElement("p");
-        const cartItemQuantity=document.createElement("p")
-        cartItemName.innerText=cartItem.name;
-        cartItemQuantity.innerText=cartItem.quantity;
-        cartItemDiv.appendChild(cartItemName);
-        cartItemDiv.appendChild(cartItemQuantity);
-        cart.appendChild(cartItemDiv);
-        }
-
-        const cartItemPriceDiv=document.createElement("div");
-        cartItemPriceDiv.classList.add('total-price');
-        const subtotalHeader=document.createElement("h3");
-        const subtotalPrice=document.createElement("p");
-        subtotalHeader.innerText="Subtotal";
-        subtotalPrice.innerText=`₹${cartInfo.subTotal}`;
-        cartItemPriceDiv.appendChild(subtotalHeader);
-        cartItemPriceDiv.appendChild(subtotalPrice);
-        cart.appendChild(cartItemPriceDiv);
-
-        const cartButton=document.createElement('button')
-        cartButton.classList.add('button');
-        cartButton.innerHTML="Checkout";
-        cart.appendChild(cartButton);
+      for (const category in CategoryItemsMap) {
+          const categoryHeaderItems = CategoryItemsMap[category];
+          const categoryItems = categoryHeaderItems.slice(1);
+          if (categoryItems.length == 0)
+              continue;
+          menuContainer.innerHTML += menuHeaderTemplate(categoryHeaderItems[0], categoryItems.length);
+          const menuItemsListDiv = menuItemsTemplate(categoryItems);
+          menuContainer.appendChild(menuItemsListDiv);
+      }
 
   }
 
-  
+
+
+  function createCartSection() {
+
+      const cartItems = cartInfo.lineItems;
+      const cart = document.querySelector(".cart");
+      cart.innerHTML = cartHeaderTemplate(cartItems.length);
+
+      for (let cartItem of cartItems) {
+          const cartItemDiv = cartItemsTemplate(cartItem);
+          cart.appendChild(cartItemDiv);
+      }
+      cart.innerHTML += cartPriceSubmitTemplate(cartInfo.subTotal);
+
+  }
+
+
 
 })();
 
