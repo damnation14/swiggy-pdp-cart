@@ -141,12 +141,6 @@ let module = (function() {
 
 
 
-  return {
-      init: displaySections
-  }
-
-
-
   function displaySections() {
 
       createCategorySection();
@@ -200,13 +194,18 @@ let module = (function() {
 
   }
 
-  function mapItemsToCategory() {
-      const menuItems = menuInfo.menuItems;
-      const categoriesList = categoryInfo.categories;
+  function createEmptyItemsMap() {
+    const categoriesList = categoryInfo.categories;
       let CategoryItemsMap = new Map();
       for (let category of categoriesList) {
           CategoryItemsMap[category.id] = [category.displayName];
       }
+      return CategoryItemsMap;
+  }
+
+  function mapItemsToCategory() {
+      const menuItems = menuInfo.menuItems;
+      CategoryItemsMap=createEmptyItemsMap();
       for (let menu of menuItems) {
           let tempCategories = menu.categories;
           for (let tempCategory of tempCategories) {
@@ -223,6 +222,10 @@ let module = (function() {
       category.target.classList.add("highlighted");
       createMenuFromCategory(category.target.id);
   }
+
+  return {
+    init: displaySections
+}
 
 })();
 
