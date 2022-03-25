@@ -6,7 +6,7 @@ class Model{
         this.cartInfo = this.getCartInfo();
         this.categoryInfo = this.getCategoryInfo();
         this.categoryItemMap=this.createCategoryItemMap();
-        //this.menu=
+        
     }
     getMenuInfo() {
         return {
