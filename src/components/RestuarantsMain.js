@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import Welcome from './Welcome'
 import Restuarants from './Restuarants'
-import Restuarant1 from './Restuarant1'
-import Restuarant2 from './Restuarant2'
+import Restuarant from './Restuarant'
+
 
 function RestuarantsMain() {
    
@@ -12,9 +12,8 @@ function RestuarantsMain() {
        
             <Routes>
                 <Route exact path='/restuarants' element={<Welcome/>}>
-                    <Route exact path='' element={<Restuarants/>}/>
-                    <Route exact path='Smoor' element={<Restuarant1/>}/>
-                    <Route  exact path='Bakehouse' element={<Restuarant2/>}/> 
+                    <Route  exact path='' element={<Restuarants/>}/>
+                    <Route  path=':restuarantName' element={<Restuarant/>}/>
                 </Route>
                 
             </Routes>
