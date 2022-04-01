@@ -1,5 +1,5 @@
 import React from 'react';
-import categoryMenuMap from './mapCategoriesMenu';
+import categoryMenuMap from './CategoriesMenuMap';
 
 
 function Menu(props) {

@@ -1,7 +1,7 @@
 
 import {  React } from 'react';
 
-function Brand () {
+function BrandHeader() {
    
    
         return (
@@ -12,4 +12,4 @@ function Brand () {
     }
 
  
-export default Brand;
+export default BrandHeader;

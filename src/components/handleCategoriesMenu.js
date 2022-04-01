@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import categoryMenuMap from './mapCategoriesMenu';
-import Menu from './menu'
-import Category from './categories'
+import categoryMenuMap from './CategoriesMenuMap';
+import Menu from './Menu'
+import Category from './Categories'
 function CategoryMenu() {
     const [category,setCategory]=useState(Object.keys(categoryMenuMap())[0])
     
 
     const highlightCategory=(id)=>{
-        console.log("in highligh",id)
+        
         document.querySelectorAll('.category ul li').forEach(element => {
             element.classList.remove("highlighted");
         })

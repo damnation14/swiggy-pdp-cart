@@ -1,5 +1,7 @@
 
-
+ * {
+	font-family: fantasy;
+  }
 body{
 	margin: 0;
 	padding: 0;
@@ -14,7 +16,6 @@ h1,
 h2,
 h3 {
 	margin: 0;
-	font-family: Helvetica;
  font-size: 25px;
 }
 
@@ -33,7 +34,8 @@ header {
 	height: 50px;
 }
 
-.title {
+.banner {
+	margin-bottom: 25px;
 	background-color: #04083C;
 	padding-left: 10%;
 	padding-right: 10%;
@@ -43,14 +45,14 @@ header {
 	align-items: center;
 }
 
-.title img {
+.banner img {
 	max-width: 200px;
 	max-height: 200px;
 	margin: 10px 10px 10px 10px;
 	flex-basis: 25%;
 }
 
-.title h1 {
+.banner h1 {
 	color: #fff;
 }
 
