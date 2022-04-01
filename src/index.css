@@ -1,0 +1,187 @@
+
+ * {
+	font-family: fantasy;
+  }
+body{
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+ font-size: 25px;
+}
+
+header {
+	padding: 0 10%
+}
+
+.logo {
+	margin-top: 12px;
+	margin-bottom: 12px;
+	display: flex;
+}
+
+.logo img {
+	width: 50px;
+	height: 50px;
+}
+
+.banner {
+	margin-bottom: 25px;
+	background-color: #04083C;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.banner img {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 10px 10px 10px 10px;
+	flex-basis: 25%;
+}
+
+.banner h1 {
+	color: #fff;
+}
+
+.content>div {
+	margin-top: 25px;
+}
+
+main {
+	min-height: calc(100vh - 300px);
+	margin: 0 auto;
+	width: 80%;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.col-3 {
+	flex-basis: 25%;
+}
+
+.category {
+	padding-top: 25px;
+	padding-right: 25px;
+	border-right: 1px solid #E5E9EC;
+}
+
+.category h2 {
+	margin: 0;
+	text-align: right;
+	color: #FA7B03;
+	font-size: 15px;
+}
+
+.category li {
+	text-align: right;
+	cursor: pointer;
+}
+
+.highlighted {
+	color: #FA7B03;
+}
+
+.menu-items {
+	padding-top: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+	flex-basis: 50%;
+}
+
+.menu-items img {
+	width: 20px;
+	height: 20px;
+}
+
+.menu-items>p {
+	margin: 0;
+	color: #999999;
+	font-size: 12px;
+}
+
+.items>div {
+	border-bottom: 2px solid #E5E9EC;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.cart {
+	padding-top: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.cart>p {
+	margin: 0;
+	color: #999999;
+	font-size: 12px;
+}
+
+.cart-item-quantity {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.total-price {
+	display: flex;
+	justify-content: space-between;
+}
+
+.total-price>p {
+	margin: 0;
+	font-weight: bold;
+}
+
+.button {
+	background-color: #4CAF50;
+	width: 100%;
+	height: 40px;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 25px;
+	cursor: pointer;
+}
+
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #060B42;
+	color: white;
+	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.contacts{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contacts img{
+  max-width: 50px;
+  max-height:50px;
+}
