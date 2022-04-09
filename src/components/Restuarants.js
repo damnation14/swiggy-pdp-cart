@@ -7,7 +7,7 @@ function Restuarants() {
     const [restuarants]=useState(restuarantsInfo.restuarants)
     const restuarantsList= restuarants.map((restuarant)=>(
         <li key={restuarant.id}>
-            <Link to={`:${restuarant.displayName}`}>{restuarant.displayName}</Link>
+            <Link className='text-link' to={`:${restuarant.displayName}`}>{restuarant.displayName}</Link>
         </li>
     ))
     return (

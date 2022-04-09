@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import cartData from './data/cart.json'
+import React, { useState,useEffect } from 'react';
+import useFetch from './api/api.js'
 
 
 
-function Cart () {
-    const [cartInfo]=useState(cartData);
+function Cart (props) {
+    
+     
+    const {data :cartInfo,loading,error} = useFetch('http://localhost:8080/cart')
+
     function mapCartItems(cart){
     
         const cartItems=cart.map((cartItem)=>(
@@ -16,8 +19,12 @@ function Cart () {
         ))
         return cartItems;
     }
+ 
+    
 
-    return ( 
+    
+    return (
+        loading?
         <>
             <h1>Cart</h1>
             <p>ITEMS {cartInfo.lineItems.length}</p>
@@ -27,7 +34,7 @@ function Cart () {
                <p>₹{cartInfo.subTotal}</p>
             </div>
             <button className="button">Checkout</button>       
-        </>
+        </>:null
      );
 }
 

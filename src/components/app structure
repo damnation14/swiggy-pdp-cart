@@ -1,0 +1,25 @@
+                                        index
+                                
+                                        App
+
+                                ResturantMain (routes) 
+                                -offer api-->
+
+ 
+ 
+        Welcome             Restuarants                     Restuarant                      Offers
+        - Header               - Banner                      -Banner                       -Banner                      
+        - Outlet               - {resturantlist}             -HandleCategoryMenu           -OfferItemList
+        - Footer                                             -Cart
+        - user api call -->                                  - category api call-->
+                                                             - Menu api call-->
+    
+
+
+                                                    HandleCategoryMenu      Cart       
+                                                    -Category               - cart api call-->
+                                                    -Menu
+
+
+                                        Category                Menu
+                                        -{categorylist}        -{menulist}

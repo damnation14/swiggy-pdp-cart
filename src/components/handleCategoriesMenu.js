@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import categoryMenuMap from './CategoriesMenuMap';
 import Menu from './Menu'
 import Category from './Categories'
-function CategoryMenu() {
-    const [category,setCategory]=useState(Object.keys(categoryMenuMap())[0])
+function HandleCategoriesMenu(props) {
+   
+    const [selectedCategory,setselectedCategory]=useState(Object.keys(categoryMenuMap(props.categories,props.menu))[0])
     
 
     const highlightCategory=(id)=>{
@@ -17,7 +18,7 @@ function CategoryMenu() {
 
     }
     const handleMenuFromCategory= (id) =>{
-        setCategory(id);
+        setselectedCategory(id);
         highlightCategory(id);
     }
     
@@ -26,15 +27,15 @@ function CategoryMenu() {
         <>
         <div className="category col-3">
         
-            <Category handleMenuFromCategory={handleMenuFromCategory}/>
+            <Category handleMenuFromCategory={handleMenuFromCategory} categoriesInfo={props.categories}/>
             
         </div>
         <div className="menu-items">
-            <Menu category={category} />
+            <Menu menu={props.menu} categories={props.categories} category={selectedCategory} />
         </div>
         </>
     );
 }
 
  
-export default CategoryMenu;
+export default HandleCategoriesMenu;
