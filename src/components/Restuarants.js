@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import restuarantsInfo from './data/restuarants.json';
+import restuarantsInfo from '../data/restuarants.json';
 import {Link} from 'react-router-dom'
 import Banner from './Banner'
 function Restuarants() {

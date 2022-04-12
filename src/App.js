@@ -7,6 +7,8 @@ import Cart from './components/Cart.js'
 import CategoryMenu from './components/HandleCategoriesMenu.js'
 import {BrowserRouter} from 'react-router-dom';
 import RestuarantsMain from './components/RestuarantsMain';
+import {Provider} from 'react-redux'
+import store from './redux/store'
 function App() {
     
         // return (
@@ -28,9 +30,11 @@ function App() {
         // );
 
         return (
-            <BrowserRouter>
-                <RestuarantsMain />
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <RestuarantsMain />
+                </BrowserRouter>
+            </Provider>
         );
     }
 

@@ -4,12 +4,13 @@ import Banner from './Banner'
 import Cart from './Cart.js'
 import HandleCategoriesMenu from './HandleCategoriesMenu.js'
 
+
 import axios from "axios"
-function Restuarant1() {
+function Restuarant() {
     
     const [categoriesInfo,setCategoriesInfo]=useState({})
     const [menuInfo,setMenuInfo]=useState({})
-   
+    
     useEffect(()=>(
         function fetchdata(){
             axios.all([
@@ -46,4 +47,4 @@ function Restuarant1() {
      );
 }
 
-export default Restuarant1 ;
+export default Restuarant ;

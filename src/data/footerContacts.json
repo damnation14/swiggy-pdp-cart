@@ -1,0 +1,18 @@
+{"contacts":[
+    {
+        "id":"1",
+        "contactUrl":"www.sample.com",
+        "contactImgUrl":"https://i.pinimg.com/originals/b7/63/69/b763699fd1fa3bfb374442593ae642e1.png"
+    },
+    {
+        "id":"2",
+        "contactUrl":"www.sample.com",
+        "contactImgUrl":"https://i.pinimg.com/originals/25/f3/c5/25f3c5a28bd422e8da0bb2d02f2e278d.png"
+    },
+    {
+        "id":"3",
+        "contactUrl":"www.sample.com",
+        "contactImgUrl":"https://png.pngitem.com/pimgs/s/165-1657001_black-and-white-twitter-logo-png-transparent-png.png"
+    }
+]}
+

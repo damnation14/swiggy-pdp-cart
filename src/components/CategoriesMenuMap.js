@@ -1,6 +1,5 @@
 
 const categoryMenuMap = (categoryInfo,menuInfo)=>{
-    console.log("map",categoryInfo,menuInfo)
     const categoriesList = categoryInfo;
    
         let CategoryItemsMap = new Map();
