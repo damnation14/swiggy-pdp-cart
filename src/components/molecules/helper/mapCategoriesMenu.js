@@ -1,5 +1,5 @@
-import  menuInfo from './data/menu.json'
-import  categoryInfo from './data/categories.json'
+import  menuInfo from '../data/menu.json'
+import  categoryInfo from '../data/categories.json'
 
 
 const categoryMenuMap = ()=>{

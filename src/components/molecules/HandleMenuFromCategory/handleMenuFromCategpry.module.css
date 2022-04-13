@@ -1,0 +1,17 @@
+.menu {
+	padding-top: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+	flex-basis: 50%;
+}
+
+.category {
+	padding-top: 25px;
+	padding-right: 25px;
+	border-right: 1px solid #E5E9EC;
+}
+
+
+.highlighted{
+    color: #FA7B03;
+}

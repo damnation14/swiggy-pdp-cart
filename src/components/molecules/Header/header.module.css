@@ -1,0 +1,8 @@
+header {
+	padding: 0 10%
+}
+.logo {
+	margin-top: 12px;
+	margin-bottom: 12px;
+	display: flex;
+}

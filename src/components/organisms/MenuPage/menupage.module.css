@@ -1,0 +1,17 @@
+.row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cart {
+	padding-top: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+    flex-basis: 25%;
+}
+
+main {
+	min-height: calc(100vh - 300px);
+	margin: 0 auto;
+	width: 80%;
+}
