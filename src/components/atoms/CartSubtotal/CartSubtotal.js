@@ -1,12 +1,12 @@
 import React from "react";
 import styles from './cartsubtotal.module.css'
 
-function CartSubtotal ({cartInfo}) {
-           
+function CartSubtotal ({subTotal}) {
+    
     return (
       <div className={styles.subtotal}>
                <h3>Subtotal</h3>
-               <p>₹{cartInfo.subTotal}</p>
+               <p>₹{subTotal}</p>
       </div>
     );
   }

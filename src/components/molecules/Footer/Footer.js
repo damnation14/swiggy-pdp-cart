@@ -1,5 +1,5 @@
 import React from 'react';
-import footerContacts from '../data/footerContacts.json'
+import footerContacts from '../../../mocks/footerContacts.json'
 import styles from './footer.module.css'
 import FooterContactLogo from '../../atoms/FooterContactLogo/FooterContactLogo.js'
 function Footer () {

@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import categoryMenuMap from '../helper/mapCategoriesMenu';
 import Menu from '../Menu/Menu.js'
 import Categories from '../Categories/Categories.js'
-import styles from './handleMenuFromCategpry.module.css'
-function CategoryMenu() {
-    const [category,setCategory]=useState(Object.keys(categoryMenuMap())[0])
-    
+import styles from './menuFromCategpry.module.css'
+import {INITIAL_CATEGORY} from './constants/initialCategory.js'
+function MenuFromCategory({menuInfo,categoriesInfo}) {
+    const [category,setCategory]=useState(Object.keys(categoryMenuMap(menuInfo,categoriesInfo))[0])
+ 
     const highlightCategory=(id)=>{
 
         document.querySelectorAll(`.${styles.category} ul li`).forEach(element => {
@@ -23,7 +24,7 @@ function CategoryMenu() {
     }
 
     useEffect(()=>(
-        highlightCategory("recommended")
+        highlightCategory(INITIAL_CATEGORY)
   ),[])
     
    
@@ -31,15 +32,15 @@ function CategoryMenu() {
         <>
         <div className={styles.category}>
         
-            <Categories handleMenuFromCategory={handleMenuFromCategory}/>
+            <Categories handleMenuFromCategory={handleMenuFromCategory} categoriesInfo={categoriesInfo}/>
             
         </div>
         <div className={styles.menu}>
-            <Menu categoryID={category} />
+            <Menu menuInfo={menuInfo} categoriesInfo={categoriesInfo} categoryID={category} />
         </div>
         </>
     );
 }
 
  
-export default CategoryMenu;
+export default MenuFromCategory;

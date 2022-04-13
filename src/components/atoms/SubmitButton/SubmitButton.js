@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './cartsubmitbutton.module.css'
 
-function CartSubmitButton () {
+function SubmitButton () {
            
     return (
       <button className={styles.checkout_button}>Checkout</button>    
@@ -9,4 +9,4 @@ function CartSubmitButton () {
   }
 
 
-export default CartSubmitButton;
+export default SubmitButton;

@@ -4,10 +4,10 @@ import MainHeader from '../../atoms/MainHeader/MainHeader.js'
 import MainItemNumber from '../../atoms/MainItemNumber/MainItemNumber.js'
 import categoryMenuMap from '../helper/mapCategoriesMenu';
 import MenuListItem from '../../atoms/MenuListItem/MenuListItem.js'
-function Header ({categoryID}) {
+function Menu ({menuInfo,categoriesInfo,categoryID}) {
    
     
-    const categoryHeaderItems = categoryMenuMap()[categoryID];  
+    const categoryHeaderItems = categoryMenuMap(menuInfo,categoriesInfo)[categoryID];  
     const currentMenu= categoryHeaderItems.slice(1);
     const menuList = currentMenu.map( (menuItem)=> (
         <MenuListItem  key={menuItem.id} menuItem={menuItem}/>
@@ -24,4 +24,4 @@ function Header ({categoryID}) {
     }
 
  
-export default Header;
+export default Menu;

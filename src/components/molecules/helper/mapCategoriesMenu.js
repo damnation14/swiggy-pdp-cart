@@ -1,14 +1,12 @@
-import  menuInfo from '../data/menu.json'
-import  categoryInfo from '../data/categories.json'
 
+const categoryMenuMap = (menuInfo,categoryInfo)=>{
 
-const categoryMenuMap = ()=>{
-    const categoriesList = categoryInfo.categories;
+    const categoriesList = categoryInfo;
         let CategoryItemsMap = new Map();
         for (let category of categoriesList) {
             CategoryItemsMap[category.id] = [category.displayName];
         }
-        const menuItems = menuInfo.menuItems;
+        const menuItems = menuInfo;
         for (let menu of menuItems) {
             let tempCategories = menu.categories;
             for (let tempCategory of tempCategories) {
