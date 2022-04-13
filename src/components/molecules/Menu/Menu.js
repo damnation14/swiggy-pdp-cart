@@ -1,9 +1,9 @@
 import {  React } from 'react';
 import styles from './menu.module.css'; 
-import MainHeader from '../../atoms/MainHeader/MainHeader.js'
-import MainItemNumber from '../../atoms/MainItemNumber/MainItemNumber.js'
+import HeaderTags from '../../atoms/HeaderTags/HeaderTags.js'
+import Text from '../../atoms/Text/Text.js'
 import categoryMenuMap from '../helper/mapCategoriesMenu';
-import MenuListItem from '../../atoms/MenuListItem/MenuListItem.js'
+import MenuListItem from '../MenuListItem/MenuListItem.js'
 function Menu ({menuInfo,categoriesInfo,categoryID}) {
    
     
@@ -16,8 +16,8 @@ function Menu ({menuInfo,categoriesInfo,categoryID}) {
 
         return (
             <div className={styles.menu_items}>
-                    <MainHeader header={categoryHeaderItems[0]} />
-                    <MainItemNumber itemNumber={currentMenu.length}/>
+                    <HeaderTags Tag='h2' headerContent={categoryHeaderItems[0]} />
+                    <Text textContent={`ITEMS ${menuList.length}`}/>
                     {menuList}
             </div>
         );

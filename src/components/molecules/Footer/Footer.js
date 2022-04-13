@@ -1,11 +1,11 @@
 import React from 'react';
 import footerContacts from '../../../mocks/footerContacts.json'
 import styles from './footer.module.css'
-import FooterContactLogo from '../../atoms/FooterContactLogo/FooterContactLogo.js'
+import FooterContactLogo from '../../atoms/LinkWithImage/LinkWithImage.js'
 function Footer () {
     
     const footerContactsList= footerContacts.contacts.map((footerContact)=>(
-        <FooterContactLogo key={footerContact.id} contactUrl={footerContact.contactUrl} contactImgUrl={footerContact.contactImgUrl} />
+        <FooterContactLogo key={footerContact.id} contactUrl={footerContact.contactUrl} imgUrl={footerContact.contactImgUrl} imgAlt="fblogo"/>
     ))
         return (
         <footer className={styles.footer}>

@@ -1,9 +1,9 @@
 import {  React } from 'react';
 import './cart.module.css'; 
-import MainHeader from '../../atoms/MainHeader/MainHeader.js'
-import MainItemNumber from '../../atoms/MainItemNumber/MainItemNumber.js'
-import CartListItem from '../../atoms/CartListItem/CartListItem.js'
-import  CartSubtotal from '../../atoms/CartSubtotal/CartSubtotal.js'
+import HeaderTags from '../../atoms/HeaderTags/HeaderTags.js'
+import Text from '../../atoms/Text/Text.js'
+import CartListItem from '../CartListItem/CartListItem.js'
+import  CartSubtotal from '../CartSubtotal/CartSubtotal.js'
 import  CartSubmitButton from '../../atoms/SubmitButton/SubmitButton.js'
 import useFetch from '../helper/customApiHook.js'
 function Cart () {
@@ -25,8 +25,8 @@ function Cart () {
         { 
             return cartInfo && Object.keys(cartInfo).length >0?
             <div className="cart">
-                    <MainHeader header="Cart" />
-                    <MainItemNumber itemNumber={cartInfo.lineItems.length}/>
+                    <HeaderTags Tag='h2' headerContent="Cart" />
+                    <Text textContent={`ITEMS ${cartInfo.lineItems.length}`}/>
                     {cartItemsListFunc(cartInfo.lineItems)}
                     <CartSubtotal subTotal={cartInfo.subTotal} />
                     <CartSubmitButton/>
