@@ -1,0 +1,9 @@
+.banner {
+	background-color: #04083C;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+}

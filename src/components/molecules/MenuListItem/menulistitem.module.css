@@ -1,0 +1,11 @@
+.menu_item {
+	border-bottom: 2px solid #E5E9EC;
+	padding-top: 25px;
+	padding-bottom: 25px;
+
+}
+
+.menu_item img {
+	width: 20px;
+	height: 20px;
+}
