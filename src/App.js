@@ -1,10 +1,10 @@
 import React from 'react';
-import BrandHeader from './components/BrandHeader.js';
-import Banner from './components/Banner.js'; 
-import Footer from './components/Footer.js'
+// import BrandHeader from './components/BrandHeader.js';
+// import Banner from './components/Banner.js'; 
+// import Footer from './components/Footer.js'
 
-import Cart from './components/Cart.js'
-import CategoryMenu from './components/HandleCategoriesMenu.js'
+// import Cart from './components/Cart.js'
+// import CategoryMenu from './components/HandleCategoriesMenu.js'
 import {BrowserRouter} from 'react-router-dom';
 import RestuarantsMain from './components/RestuarantsMain';
 import {Provider} from 'react-redux'
